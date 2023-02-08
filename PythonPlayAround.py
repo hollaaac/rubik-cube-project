@@ -37,6 +37,8 @@ class Node:
     def getData(self):
         return self.data
 
+
+"""
 class Cube:
     def _init_(self):
 
@@ -114,17 +116,63 @@ pairs = [ [2, -7], [-4, -20], [7, 8], [-13, 2] ]
 total = 0;
 for x in pairs:
     total = total + math.fabs(x[0] - x[1])
-                           
+"""          
 
+class linkedCube:
+    def _init_(self):
+        self.Front = None
 
+#Setup of Cube
 
+Cube = linkedCube()
 
+WhiteFace = Node()
+YellowFace = Node()
+RedFace = Node()
+OrangeFace = Node()
+GreenFace = Node()
+BlueFace = Node()
 
+RedFace.top = WhiteFace
+OrangeFace.top = WhiteFace
+GreenFace.top = WhiteFace
+BlueFace.top = WhiteFace
 
+WhiteFace.top = RedFace
+YellowFace.top = OrangeFace #Might be easier to have Red as top for both. WIll need to change all of Yellow/Whites directions as well
 
+RedFace.bottom = YellowFace
+OrangeFace.bottom = YellowFace
+GreenFace.bottom = YellowFace
+BlueFace.bottom = YellowFace
 
+WhiteFace.bottom = OrangeFace
+YellowFace.bottom = RedFace
 
+RedFace.right = BlueFace
+BlueFace.right = OrangeFace
+OrangeFace.right = GreenFace
+GreenFace.right = RedFace
 
-         
+WhiteFace.right = GreenFace
+YellowFace.right = GreenFace
 
+RedFace.left = GreenFace
+GreenFace.left = OrangeFace
+OrangeFace.left = BlueFace
+BlueFace.left = RedFace
 
+WhiteFace.left = BlueFace
+YellowFace.Left = BlueFace
+
+WhiteFace.data = ["W", "W", "W", "W", "W", "W", "W", "W", "W"]                      #The orientation is [1, 2, 3] for list [1, 2, 3, 4, 5, 6, 7, 8, 9] with the Face.top being 'above' the array
+YellowFace.data = ["Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y"]                     #                   [4, 5, 6]
+RedFace.data = ["R", "R", "R", "R", "R", "R", "R", "R", "R"]                        #                   [7, 8, 9]
+OrangeFace.data = ["O", "O", "O", "O", "O", "O", "O", "O", "O"]                     # R = Red, O = Orange, G = Green, B = Blue, W = White, Y = Yellow
+GreenFace.data = ["G", "G", "G", "G", "G", "G", "G", "G", "G"]
+BlueFace.data = ["B", "B", "B", "B", "B", "B", "B", "B", "B"]
+
+#End of Setup
+
+print(WhiteFace.data) #WORKS!
+print(WhiteFace.right.right.data)
