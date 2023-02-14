@@ -38,8 +38,8 @@ class Block:                                #Actual cube in 3x3x3 array with eac
     def getPiece(self, x, y, z):
         return (self.Block[x, y, z])
 
-
-Cube = Block(3)
+size = 3
+Cube = Block(size)
 
 Cube.printBlock()
 print (Cube.getPiece(1, 2, 2))
