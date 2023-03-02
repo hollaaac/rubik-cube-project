@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.lang.Math;
 
 public class Cubelet {
     
@@ -43,23 +44,23 @@ public class Cubelet {
 
     //Returns the starting colors for each axis/face
     //DO NOT USE after building the cube unless looking for initial color of side
-    public char colorFinder(char axis, int depth){
+    char colorFinder(char axis, int depth, int max){
 
-        if(axis == 'x'){
+        if(axis == 'x' && Math.abs(depth) == max){
 
            if(depth > 0){return 'B';}
            if(depth < 0){return 'G';}
 
         }
 
-        if(axis == 'y'){
+        if(axis == 'y' && Math.abs(depth) == max){
 
             if(depth > 0){return 'Y';}
             if(depth < 0){return 'W';}
 
         }
 
-        if(axis == 'z'){
+        if(axis == 'z' && Math.abs(depth) == max){
 
             if(depth > 0){return 'R';}
             if(depth < 0){return 'O';}
@@ -68,5 +69,32 @@ public class Cubelet {
 
         return 'N'; //Nothing so color is "iniside of a cube. Pieces with only one color are center pieces"
     }
+
+    void colorSwap(char axisNotUsed){
+
+        char temp;
+
+        if(axisNotUsed == 'x'){
+            temp = colors[1];
+            colors[1] = colors[2];
+            colors[2] = temp;
+        }
+
+        if(axisNotUsed == 'y'){
+            temp = colors[0];
+            colors[0] = colors[2];
+            colors[2] = temp;
+        }
+
+        if(axisNotUsed == 'z'){
+            temp = colors[0];
+            colors[0] = colors[1];
+            colors[1] = temp;
+        }
+
+    
+    }
 }
+
+
 
