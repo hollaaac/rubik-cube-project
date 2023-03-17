@@ -139,6 +139,7 @@ public class Block {
 
     }
 
+    //Makes the 12 different turns based on the direction given
     void turnNotModular(String direction){
          
         Cubelet tempCubelet;
@@ -231,7 +232,7 @@ public class Block {
                 
         }
 
-        if(direction == "D"){ //Bottom ClockWise
+        if(direction == "D"){ //Bottom (Down) ClockWise
 
             tempCubelet = Block[0][2][0];
             Block[0][2][0] = Block[0][2][2];
@@ -253,7 +254,7 @@ public class Block {
                 
         }
 
-        if(direction == "D'"){ //Bottom Counter-ClockWise
+        if(direction == "D'"){ //Bottom (Down) Counter-ClockWise
 
             tempCubelet = Block[0][2][0];
             Block[0][2][0] = Block[2][2][0];
@@ -319,7 +320,7 @@ public class Block {
                 
         }
         
-        if(direction == "B" ){ //Front Clockwise
+        if(direction == "B" ){ //Back Clockwise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[2][0][0];
@@ -341,7 +342,7 @@ public class Block {
 
         }
 
-        if(direction == "B'" ){ //Front Clockwise
+        if(direction == "B'" ){ //Back Clockwise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[0][2][0];
@@ -409,5 +410,136 @@ public class Block {
 
     }
 
+    //Prints each face individually
+    void printFaces (){
+
+        System.out.println("White Face:");
+        System.out.println(Block[0][0][0].colors[1] + ", " + Block[1][0][0].colors[1] + ", " + Block[2][0][0].colors[1]);
+        System.out.println(Block[0][0][1].colors[1] + ", " + Block[1][0][1].colors[1] + ", " + Block[2][0][1].colors[1]);
+        System.out.println(Block[0][0][2].colors[1] + ", " + Block[1][0][2].colors[1] + ", " + Block[2][0][2].colors[1]);
+
+        System.out.println("");
+
+        System.out.println("Yellow Face:");
+        System.out.println(Block[0][2][2].colors[1] + ", " + Block[1][2][2].colors[1] + ", " + Block[2][2][2].colors[1]);
+        System.out.println(Block[0][2][1].colors[1] + ", " + Block[1][2][1].colors[1] + ", " + Block[2][2][1].colors[1]);
+        System.out.println(Block[0][2][0].colors[1] + ", " + Block[1][2][0].colors[1] + ", " + Block[2][2][0].colors[1]);
+
+        System.out.println("");
+
+        System.out.println("Red Face:");
+        System.out.println(Block[0][0][2].colors[2] + ", " + Block[1][0][2].colors[2] + ", " + Block[2][0][2].colors[2]);
+        System.out.println(Block[0][1][2].colors[2] + ", " + Block[1][1][2].colors[2] + ", " + Block[2][1][2].colors[2]);
+        System.out.println(Block[0][2][2].colors[2] + ", " + Block[1][2][2].colors[2] + ", " + Block[2][2][2].colors[2]);
+
+        System.out.println("");
+
+        System.out.println("Orange Face:");
+        System.out.println(Block[0][0][0].colors[2] + ", " + Block[1][0][0].colors[2] + ", " + Block[2][0][0].colors[2]);
+        System.out.println(Block[0][1][0].colors[2] + ", " + Block[1][1][0].colors[2] + ", " + Block[2][1][0].colors[2]);
+        System.out.println(Block[0][2][0].colors[2] + ", " + Block[1][2][0].colors[2] + ", " + Block[2][2][0].colors[2]);
+
+        System.out.println("");
+
+        System.out.println("Green Face:");
+        System.out.println(Block[0][0][0].colors[0] + ", " + Block[0][0][1].colors[0] + ", " + Block[0][0][2].colors[0]);
+        System.out.println(Block[0][1][0].colors[0] + ", " + Block[0][1][1].colors[0] + ", " + Block[0][1][2].colors[0]);
+        System.out.println(Block[0][2][0].colors[0] + ", " + Block[0][2][1].colors[0] + ", " + Block[0][2][2].colors[0]);
+
+        System.out.println("");
+
+        System.out.println("Blue Face:");
+        System.out.println(Block[2][0][0].colors[0] + ", " + Block[2][0][1].colors[0] + ", " + Block[2][0][2].colors[0]);
+        System.out.println(Block[2][1][0].colors[0] + ", " + Block[2][1][1].colors[0] + ", " + Block[2][1][2].colors[0]);
+        System.out.println(Block[2][2][0].colors[0] + ", " + Block[2][2][1].colors[0] + ", " + Block[2][2][2].colors[0]);
+
+    }
+
+    //Prints the block all together in "one 2d array"
+    void printBlock (){
+        System.out.println("            " + "[" + Block[0][0][0].colors[1] + "] [" + Block[1][0][0].colors[1] + "] [" + Block[2][0][0].colors[1] + "]");
+        System.out.println("            " + "[" + Block[0][0][1].colors[1] + "] [" + Block[1][0][1].colors[1] + "] [" + Block[2][0][1].colors[1] + "]");
+        System.out.println("            " + "[" + Block[0][0][2].colors[1] + "] [" + Block[1][0][2].colors[1] + "] [" + Block[2][0][2].colors[1] + "]");
+        System.out.println("[" + Block[0][0][0].colors[0] + "] [" + Block[0][0][1].colors[0] + "] [" + Block[0][0][2].colors[0] + "] [" + Block[0][0][2].colors[2] + "] [" + Block[1][0][2].colors[2] + "] [" + Block[2][0][2].colors[2] + "] [" + Block[2][0][2].colors[0] + "] [" + Block[2][0][1].colors[0] + "] [" + Block[2][0][0].colors[0] + "] [" + Block[2][0][0].colors[2] + "] [" + Block[1][0][0].colors[2] + "] [" + Block[0][0][0].colors[2] + "]");
+        System.out.println("[" + Block[0][1][0].colors[0] + "] [" + Block[0][1][1].colors[0] + "] [" + Block[0][1][2].colors[0] + "] [" + Block[0][1][2].colors[2] + "] [" + Block[1][1][2].colors[2] + "] [" + Block[2][1][2].colors[2] + "] [" + Block[2][1][2].colors[0] + "] [" + Block[2][1][1].colors[0] + "] [" + Block[2][1][0].colors[0] + "] [" + Block[2][1][0].colors[2] + "] [" + Block[1][1][0].colors[2] + "] [" + Block[0][1][0].colors[2] + "]");
+        System.out.println("[" + Block[0][2][0].colors[0] + "] [" + Block[0][2][1].colors[0] + "] [" + Block[0][2][2].colors[0] + "] [" + Block[0][2][2].colors[2] + "] [" + Block[1][2][2].colors[2] + "] [" + Block[2][2][2].colors[2] + "] [" + Block[2][2][2].colors[0] + "] [" + Block[2][2][1].colors[0] + "] [" + Block[2][2][0].colors[0] + "] [" + Block[2][2][0].colors[2] + "] [" + Block[1][2][0].colors[2] + "] [" + Block[0][2][0].colors[2] + "]");
+        System.out.println("            " + "[" + Block[0][2][2].colors[1] + "] [" + Block[1][2][2].colors[1] + "] [" + Block[2][2][2].colors[1] + "]");
+        System.out.println("            " + "[" + Block[0][2][1].colors[1] + "] [" + Block[1][2][1].colors[1] + "] [" + Block[2][2][1].colors[1] + "]");
+        System.out.println("            " + "[" + Block[0][2][0].colors[1] + "] [" + Block[1][2][0].colors[1] + "] [" + Block[2][2][0].colors[1] + "]");
+    }
+
+    void randomizeCube(int turns){
+        Random rn = new Random();
+
+        int faceTurn;
+
+        for (int i = 0; i < turns; ++i){
+            faceTurn = rn.nextInt(11);
+
+            if(faceTurn == 0){
+                turnNotModular("F"); 
+                //System.out.println("F");  
+            }
+
+            if(faceTurn == 1){
+                turnNotModular("F'"); 
+                //System.out.println("F'");  
+            }
+
+            if(faceTurn == 2){
+                turnNotModular("B");  
+                //System.out.println("B"); 
+            }
+
+            if(faceTurn == 3){
+                turnNotModular("B'"); 
+                //System.out.println("B'");  
+            }
+
+            if(faceTurn == 4){
+                turnNotModular("R"); 
+                //System.out.println("R");  
+            }
+
+            if(faceTurn == 5){
+                turnNotModular("R'");  
+                //System.out.println("R'"); 
+            }
+
+            if(faceTurn == 6){
+                turnNotModular("L");  
+                //System.out.println("L"); 
+            }
+
+            if(faceTurn == 7){
+                turnNotModular("L'"); 
+                //System.out.println("L'");  
+            }
+            
+            if(faceTurn == 8){
+                turnNotModular("U");   
+                //System.out.println("U");
+            }
+
+            if(faceTurn == 9){
+                turnNotModular("U'");   
+                System.out.println("U'");
+            }
+
+            if(faceTurn == 10){
+                turnNotModular("D");  
+                //System.out.println("D"); 
+            }
+
+            if(faceTurn == 11){
+                turnNotModular("D'"); 
+                //System.out.println("D'");  
+            }
+
+            //printBlock();
+            //System.out.println();
+
+        }
+    }
 }
 
