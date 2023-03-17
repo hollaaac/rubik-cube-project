@@ -467,7 +467,9 @@ public class Block {
         System.out.println("            " + "[" + Block[0][2][1].colors[1] + "] [" + Block[1][2][1].colors[1] + "] [" + Block[2][2][1].colors[1] + "]");
         System.out.println("            " + "[" + Block[0][2][0].colors[1] + "] [" + Block[1][2][0].colors[1] + "] [" + Block[2][2][0].colors[1] + "]");
     }
-
+    
+    //Randomizes cube with user input on how many random turns it makes.
+    //Will sometimes do two turns that equal out, could be fixed
     void randomizeCube(int turns){
         Random rn = new Random();
 
