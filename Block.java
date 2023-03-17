@@ -132,8 +132,8 @@ public class Block {
         System.out.println(""); //Space in terminal
 
         for (int x = 0; x < this.size; x++){
-            for (int z = 0; z < this.size; z++){
-                System.out.println("Array [" + x + "] [" + 2 + "] [" + z + "] -> " + this.Block[x][2][z].getColors()[0] + ", " + Block[x][0][z].getColors()[1] + ", " + Block[x][0][z].getColors()[2]);
+            for (int y = 0; y < this.size; y++){
+                System.out.println("Array [" + x + "] [" + y + "] [" + 2 + "] -> " + this.Block[x][y][2].getColors()[0] + ", " + Block[x][y][2].getColors()[1] + ", " + Block[x][y][2].getColors()[2]);
             }
         }
 
@@ -187,7 +187,7 @@ public class Block {
 
         }
 
-        if(direction == "R"){ //Left Counter-ClockWise
+        if(direction == "R"){ //Right Clockwise
 
             tempCubelet = Block[2][0][0];
             Block[2][0][0] = Block[2][0][2];
@@ -209,7 +209,7 @@ public class Block {
 
         }
 
-        if(direction == "R'"){ //Left ClockWise
+        if(direction == "R'"){ //Right Counter-ClockWise
 
             tempCubelet = Block[2][0][0];
             Block[2][0][0] = Block[2][2][0];
@@ -231,30 +231,183 @@ public class Block {
                 
         }
 
-        if(direction == "F"){ //Left ClockWise
+        if(direction == "D"){ //Bottom ClockWise
+
+            tempCubelet = Block[0][2][0];
+            Block[0][2][0] = Block[0][2][2];
+            Block[0][2][2] = Block[2][2][2];
+            Block[2][2][2] = Block[2][2][0];
+            Block[2][2][0] = tempCubelet;
+
+            tempCubelet = Block[1][2][0];
+            Block[1][2][0] = Block[0][2][1];
+            Block[0][2][1] = Block[1][2][2];
+            Block[1][2][2] = Block[2][2][1];
+            Block[2][2][1] = tempCubelet;
+
+            for(int x = 0; x < size; ++x){
+                for(int z = 0; z < size; ++z){
+                    Block[x][2][z].colorSwap('y');
+                }
+            }
+                
+        }
+
+        if(direction == "D'"){ //Bottom Counter-ClockWise
+
+            tempCubelet = Block[0][2][0];
+            Block[0][2][0] = Block[2][2][0];
+            Block[2][2][0] = Block[2][2][2];
+            Block[2][2][2] = Block[0][2][2];
+            Block[0][2][2] = tempCubelet;
+
+            tempCubelet = Block[1][2][0];
+            Block[1][2][0] = Block[2][2][1];
+            Block[2][2][1] = Block[1][2][2];
+            Block[1][2][2] = Block[0][2][1];
+            Block[0][2][1] = tempCubelet;
+
+            for(int x = 0; x < size; ++x){
+                for(int z = 0; z < size; ++z){
+                    Block[x][2][z].colorSwap('y');
+                }
+            }
+                
+        }
+
+        if(direction == "U"){ //Up (Top) ClockWise
 
             tempCubelet = Block[0][0][0];
-            Block[0][0][0] = Block[0][2][0];
-            Block[0][2][0] = Block[0][2][2];
-            Block[0][2][2] = Block[0][0][2];
+            Block[0][0][0] = Block[0][0][2];
+            Block[0][0][2] = Block[2][0][2];
+            Block[2][0][2] = Block[2][0][0];
+            Block[2][0][0] = tempCubelet;
+
+            tempCubelet = Block[1][0][0];
+            Block[1][0][0] = Block[0][0][1];
+            Block[0][0][1] = Block[1][0][2];
+            Block[1][0][2] = Block[2][0][1];
+            Block[2][0][1] = tempCubelet;
+
+            for(int x = 0; x < size; ++x){
+                for(int z = 0; z < size; ++z){
+                    Block[x][0][z].colorSwap('y');
+                }
+            }
+                
+        }
+
+        if(direction == "U'"){ //Up (Top) Counter-ClockWise
+
+            tempCubelet = Block[0][0][0];
+            Block[0][0][0] = Block[2][0][0];
+            Block[2][0][0] = Block[2][0][2];
+            Block[2][0][2] = Block[0][0][2];
             Block[0][0][2] = tempCubelet;
 
-            tempCubelet = Block[0][0][1];
-            Block[0][0][1] = Block[0][1][0];
-            Block[0][1][0] = Block[0][2][1];
-            Block[0][2][1] = Block[0][1][2];
-            Block[0][1][2] = tempCubelet;
+            tempCubelet = Block[1][0][0];
+            Block[1][0][0] = Block[2][0][1];
+            Block[2][0][1] = Block[1][0][2];
+            Block[1][0][2] = Block[0][0][1];
+            Block[0][0][1] = tempCubelet;
 
-            for(int y = 0; y < size; ++y){
+            for(int x = 0; x < size; ++x){
                 for(int z = 0; z < size; ++z){
-                    Block[0][y][z].colorSwap('x');
+                    Block[x][0][z].colorSwap('y');
                 }
             }
                 
         }
         
+        if(direction == "B" ){ //Front Clockwise
+
+            tempCubelet = Block[0][0][0];
+            Block[0][0][0] = Block[2][0][0];
+            Block[2][0][0] = Block[2][2][0];
+            Block[2][2][0] = Block[0][2][0];
+            Block[0][2][0] = tempCubelet;
+
+            tempCubelet = Block[1][0][0];
+            Block[1][0][0] = Block[2][1][0];
+            Block[2][1][0] = Block[1][2][0];
+            Block[1][2][0] = Block[0][1][0];
+            Block[0][1][0] = tempCubelet;
+
+            for(int x = 0; x < size; ++x){
+                for(int y = 0; y < size; ++y){
+                    Block[x][y][0].colorSwap('z');
+                }
+            }
+
+        }
+
+        if(direction == "B'" ){ //Front Clockwise
+
+            tempCubelet = Block[0][0][0];
+            Block[0][0][0] = Block[0][2][0];
+            Block[0][2][0] = Block[2][2][0];
+            Block[2][2][0] = Block[2][0][0];
+            Block[2][0][0] = tempCubelet;
+
+            tempCubelet = Block[1][0][0];
+            Block[1][0][0] = Block[0][1][0];
+            Block[0][1][0] = Block[1][2][0];
+            Block[1][2][0] = Block[2][1][0];
+            Block[2][1][0] = tempCubelet;
+
+            for(int x = 0; x < size; ++x){
+                for(int y = 0; y < size; ++y){
+                    Block[x][y][0].colorSwap('z');
+                }
+            }
+
+        }
+
+        if(direction == "F'" ){ //Front Clockwise
+
+            tempCubelet = Block[0][0][2];
+            Block[0][0][2] = Block[2][0][2];
+            Block[2][0][2] = Block[2][2][2];
+            Block[2][2][2] = Block[0][2][2];
+            Block[0][2][2] = tempCubelet;
+
+            tempCubelet = Block[1][0][2];
+            Block[1][0][2] = Block[2][1][2];
+            Block[2][1][2] = Block[1][2][2];
+            Block[1][2][2] = Block[0][1][2];
+            Block[0][1][2] = tempCubelet;
+
+            for(int x = 0; x < size; ++x){
+                for(int y = 0; y < size; ++y){
+                    Block[x][y][2].colorSwap('z');
+                }
+            }
+
+        }
+
+        if(direction == "F" ){ //Front Clockwise
+
+            tempCubelet = Block[0][0][2];
+            Block[0][0][2] = Block[0][2][2];
+            Block[0][2][2] = Block[2][2][2];
+            Block[2][2][2] = Block[2][0][2];
+            Block[2][0][2] = tempCubelet;
+
+            tempCubelet = Block[1][0][2];
+            Block[1][0][2] = Block[0][1][2];
+            Block[0][1][2] = Block[1][2][2];
+            Block[1][2][2] = Block[2][1][2];
+            Block[2][1][2] = tempCubelet;
+
+            for(int x = 0; x < size; ++x){
+                for(int y = 0; y < size; ++y){
+                    Block[x][y][2].colorSwap('z');
+                }
+            }
+
+        }
+
     }
 
 }
-
 
