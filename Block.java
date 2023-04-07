@@ -1,3 +1,5 @@
+package com.display;
+
 import java.io.*;
 import java.util.*;
 import java.lang.Math;
@@ -83,6 +85,82 @@ public class Block {
 
         this.Block = Block;
 
+    }
+
+    //Puts all the colors and values into one string
+    //Used for AStar and user input blocks
+    //Follows format of PrintBlock just for each face
+    public String BlocktoString(){
+
+        String BlockString = "";
+
+        //White Face
+        BlockString = BlockString + Block[0][0][0].colors[1];
+        BlockString = BlockString + Block[1][0][0].colors[1];
+        BlockString = BlockString + Block[2][0][0].colors[1];
+        BlockString = BlockString + Block[0][0][1].colors[1];
+        BlockString = BlockString + Block[1][0][1].colors[1];
+        BlockString = BlockString + Block[2][0][1].colors[1];
+        BlockString = BlockString + Block[0][0][2].colors[1];
+        BlockString = BlockString + Block[1][0][2].colors[1];
+        BlockString = BlockString + Block[2][0][2].colors[1];
+
+        //Green Face
+        BlockString = BlockString + Block[0][0][0].colors[0];
+        BlockString = BlockString + Block[0][0][1].colors[0];
+        BlockString = BlockString + Block[0][0][2].colors[0];
+        BlockString = BlockString + Block[0][1][0].colors[0];
+        BlockString = BlockString + Block[0][1][1].colors[0];
+        BlockString = BlockString + Block[0][1][2].colors[0];
+        BlockString = BlockString + Block[0][2][0].colors[0];
+        BlockString = BlockString + Block[0][2][1].colors[0];
+        BlockString = BlockString + Block[0][2][2].colors[0];
+
+        //Red Face
+        BlockString = BlockString + Block[0][0][2].colors[2];
+        BlockString = BlockString + Block[1][0][2].colors[2];
+        BlockString = BlockString + Block[2][0][2].colors[2];
+        BlockString = BlockString + Block[0][1][2].colors[2];
+        BlockString = BlockString + Block[1][1][2].colors[2];
+        BlockString = BlockString + Block[2][1][2].colors[2];
+        BlockString = BlockString + Block[0][2][2].colors[2];
+        BlockString = BlockString + Block[1][2][2].colors[2];
+        BlockString = BlockString + Block[2][2][2].colors[2];
+
+        //Blue Face
+        BlockString = BlockString + Block[2][0][2].colors[0];
+        BlockString = BlockString + Block[2][0][1].colors[0];
+        BlockString = BlockString + Block[2][0][0].colors[0];
+        BlockString = BlockString + Block[2][0][2].colors[0];
+        BlockString = BlockString + Block[2][0][1].colors[0];
+        BlockString = BlockString + Block[2][0][0].colors[0];
+        BlockString = BlockString + Block[2][0][2].colors[0];
+        BlockString = BlockString + Block[2][0][1].colors[0];
+        BlockString = BlockString + Block[2][0][0].colors[0];
+
+        //Orange Face
+        BlockString = BlockString + Block[2][0][0].colors[2];
+        BlockString = BlockString + Block[1][0][0].colors[2];
+        BlockString = BlockString + Block[0][0][0].colors[2];
+        BlockString = BlockString + Block[2][1][0].colors[2];
+        BlockString = BlockString + Block[1][1][0].colors[2];
+        BlockString = BlockString + Block[0][1][0].colors[2];
+        BlockString = BlockString + Block[2][2][0].colors[2];
+        BlockString = BlockString + Block[1][2][0].colors[2];
+        BlockString = BlockString + Block[0][2][0].colors[2];
+
+        //Yellow Face
+        BlockString = BlockString + Block[0][2][2].colors[1];
+        BlockString = BlockString + Block[1][2][2].colors[1];
+        BlockString = BlockString + Block[2][2][2].colors[1];
+        BlockString = BlockString + Block[0][2][1].colors[1];
+        BlockString = BlockString + Block[1][2][1].colors[1];
+        BlockString = BlockString + Block[2][2][1].colors[1];
+        BlockString = BlockString + Block[0][2][0].colors[1];
+        BlockString = BlockString + Block[1][2][0].colors[1];
+        BlockString = BlockString + Block[2][2][0].colors[1];
+
+        return BlockString;
     }
 
     //prints block info with cords and colors of cubelets
@@ -232,7 +310,7 @@ public class Block {
                 
         }
 
-        if(direction == "D"){ //Bottom (Down) ClockWise
+        if(direction == "D'"){ //Bottom (Down) ClockWise
 
             tempCubelet = Block[0][2][0];
             Block[0][2][0] = Block[0][2][2];
@@ -254,7 +332,7 @@ public class Block {
                 
         }
 
-        if(direction == "D'"){ //Bottom (Down) Counter-ClockWise
+        if(direction == "D"){ //Bottom (Down) Counter-ClockWise
 
             tempCubelet = Block[0][2][0];
             Block[0][2][0] = Block[2][2][0];
@@ -276,7 +354,7 @@ public class Block {
                 
         }
 
-        if(direction == "U"){ //Up (Top) ClockWise
+        if(direction == "U'"){ //Up (Top) ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[0][0][2];
@@ -298,7 +376,7 @@ public class Block {
                 
         }
 
-        if(direction == "U'"){ //Up (Top) Counter-ClockWise
+        if(direction == "U"){ //Up (Top) Counter-ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[2][0][0];
@@ -407,6 +485,7 @@ public class Block {
             }
 
         }
+        
 
     }
 
@@ -456,7 +535,7 @@ public class Block {
     }
 
     //Prints the block all together in "one 2d array"
-    void printBlock (){
+    public void printBlock (){
         System.out.println("            " + "[" + Block[0][0][0].colors[1] + "] [" + Block[1][0][0].colors[1] + "] [" + Block[2][0][0].colors[1] + "]");
         System.out.println("            " + "[" + Block[0][0][1].colors[1] + "] [" + Block[1][0][1].colors[1] + "] [" + Block[2][0][1].colors[1] + "]");
         System.out.println("            " + "[" + Block[0][0][2].colors[1] + "] [" + Block[1][0][2].colors[1] + "] [" + Block[2][0][2].colors[1] + "]");
@@ -476,51 +555,51 @@ public class Block {
         int faceTurn;
 
         for (int i = 0; i < turns; ++i){
-            faceTurn = rn.nextInt(11);
+            faceTurn = rn.nextInt(12);
 
             if(faceTurn == 0){
                 turnNotModular("F"); 
-                //System.out.println("F");  
+                System.out.println("F");  
             }
 
             if(faceTurn == 1){
                 turnNotModular("F'"); 
-                //System.out.println("F'");  
+                System.out.println("F'");  
             }
 
             if(faceTurn == 2){
                 turnNotModular("B");  
-                //System.out.println("B"); 
+                System.out.println("B"); 
             }
 
             if(faceTurn == 3){
                 turnNotModular("B'"); 
-                //System.out.println("B'");  
+                System.out.println("B'");  
             }
 
             if(faceTurn == 4){
                 turnNotModular("R"); 
-                //System.out.println("R");  
+                System.out.println("R");  
             }
 
             if(faceTurn == 5){
                 turnNotModular("R'");  
-                //System.out.println("R'"); 
+                System.out.println("R'"); 
             }
 
             if(faceTurn == 6){
                 turnNotModular("L");  
-                //System.out.println("L"); 
+                System.out.println("L"); 
             }
 
             if(faceTurn == 7){
                 turnNotModular("L'"); 
-                //System.out.println("L'");  
+                System.out.println("L'");  
             }
             
             if(faceTurn == 8){
                 turnNotModular("U");   
-                //System.out.println("U");
+                System.out.println("U");
             }
 
             if(faceTurn == 9){
@@ -530,12 +609,16 @@ public class Block {
 
             if(faceTurn == 10){
                 turnNotModular("D");  
-                //System.out.println("D"); 
+                System.out.println("D"); 
             }
 
             if(faceTurn == 11){
                 turnNotModular("D'"); 
-                //System.out.println("D'");  
+                System.out.println("D'");  
+            }
+
+            if(faceTurn == 12){
+                System.out.println("This case shouldnt happen in randomize");
             }
 
             //printBlock();
@@ -543,5 +626,6 @@ public class Block {
 
         }
     }
+
 }
 
