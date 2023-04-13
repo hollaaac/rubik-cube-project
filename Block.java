@@ -163,6 +163,76 @@ public class Block {
         return BlockString;
     }
 
+    void StringtoBlock(String blockString){
+
+        //White Face
+        Block[0][0][0].colors[1] = blockString.charAt(0);
+        Block[1][0][0].colors[1] = blockString.charAt(1);
+        Block[2][0][0].colors[1] = blockString.charAt(2);
+        Block[0][0][1].colors[1] = blockString.charAt(3);
+        Block[1][0][1].colors[1] = blockString.charAt(4);
+        Block[2][0][1].colors[1] = blockString.charAt(5);
+        Block[0][0][2].colors[1] = blockString.charAt(6);
+        Block[1][0][2].colors[1] = blockString.charAt(7);
+        Block[2][0][2].colors[1] = blockString.charAt(8);
+
+        //Green Face
+        Block[0][0][0].colors[0] = blockString.charAt(9);
+        Block[0][0][1].colors[0] = blockString.charAt(10);
+        Block[0][0][2].colors[0] = blockString.charAt(11);
+        Block[0][1][0].colors[0] = blockString.charAt(12);
+        Block[0][1][1].colors[0] = blockString.charAt(13);
+        Block[0][1][2].colors[0] = blockString.charAt(14);
+        Block[0][2][0].colors[0] = blockString.charAt(15);
+        Block[0][2][1].colors[0] = blockString.charAt(16);
+        Block[0][2][2].colors[0] = blockString.charAt(17);
+
+        //Red Face
+        Block[0][0][2].colors[2] = blockString.charAt(18);
+        Block[1][0][2].colors[2] = blockString.charAt(19);
+        Block[2][0][2].colors[2] = blockString.charAt(20);
+        Block[0][1][2].colors[2] = blockString.charAt(21);
+        Block[1][1][2].colors[2] = blockString.charAt(22);
+        Block[2][1][2].colors[2] = blockString.charAt(23);
+        Block[0][2][2].colors[2] = blockString.charAt(24);
+        Block[1][2][2].colors[2] = blockString.charAt(25);
+        Block[2][2][2].colors[2] = blockString.charAt(26);
+
+        //Blue Face
+        Block[2][0][2].colors[0] = blockString.charAt(27);
+        Block[2][0][1].colors[0] = blockString.charAt(28);
+        Block[2][0][0].colors[0] = blockString.charAt(29);
+        Block[2][0][2].colors[0] = blockString.charAt(30);
+        Block[2][0][1].colors[0] = blockString.charAt(31);
+        Block[2][0][0].colors[0] = blockString.charAt(32);
+        Block[2][0][2].colors[0] = blockString.charAt(33);
+        Block[2][0][1].colors[0] = blockString.charAt(34);
+        Block[2][0][0].colors[0] = blockString.charAt(35);
+
+        //Orange Face
+        Block[2][0][0].colors[2] = blockString.charAt(36);
+        Block[1][0][0].colors[2] = blockString.charAt(37);
+        Block[0][0][0].colors[2] = blockString.charAt(38);
+        Block[2][1][0].colors[2] = blockString.charAt(39);
+        Block[1][1][0].colors[2] = blockString.charAt(40);
+        Block[0][1][0].colors[2] = blockString.charAt(14);
+        Block[2][2][0].colors[2] = blockString.charAt(42);
+        Block[1][2][0].colors[2] = blockString.charAt(43);
+        Block[0][2][0].colors[2] = blockString.charAt(44);
+
+        //Yellow Face
+        Block[0][2][2].colors[1] = blockString.charAt(45);
+        Block[1][2][2].colors[1] = blockString.charAt(46);
+        Block[2][2][2].colors[1] = blockString.charAt(47);
+        Block[0][2][1].colors[1] = blockString.charAt(48);
+        Block[1][2][1].colors[1] = blockString.charAt(49);
+        Block[2][2][1].colors[1] = blockString.charAt(50);
+        Block[0][2][0].colors[1] = blockString.charAt(51);
+        Block[1][2][0].colors[1] = blockString.charAt(52);
+        Block[2][2][0].colors[1] = blockString.charAt(53);
+
+    }
+
     //prints block info with cords and colors of cubelets
     void printer(){
 
@@ -559,66 +629,66 @@ public class Block {
 
             if(faceTurn == 0){
                 turnNotModular("F"); 
-                System.out.println("F");  
+                //System.out.println("F");  
             }
 
             if(faceTurn == 1){
                 turnNotModular("F'"); 
-                System.out.println("F'");  
+                //System.out.println("F'");  
             }
 
             if(faceTurn == 2){
                 turnNotModular("B");  
-                System.out.println("B"); 
+                //System.out.println("B"); 
             }
 
             if(faceTurn == 3){
                 turnNotModular("B'"); 
-                System.out.println("B'");  
+                //System.out.println("B'");  
             }
 
             if(faceTurn == 4){
                 turnNotModular("R"); 
-                System.out.println("R");  
+                //System.out.println("R");  
             }
 
             if(faceTurn == 5){
                 turnNotModular("R'");  
-                System.out.println("R'"); 
+                //System.out.println("R'"); 
             }
 
             if(faceTurn == 6){
                 turnNotModular("L");  
-                System.out.println("L"); 
+                //System.out.println("L"); 
             }
 
             if(faceTurn == 7){
                 turnNotModular("L'"); 
-                System.out.println("L'");  
+                //System.out.println("L'");  
             }
             
             if(faceTurn == 8){
                 turnNotModular("U");   
-                System.out.println("U");
+                //System.out.println("U");
             }
 
             if(faceTurn == 9){
                 turnNotModular("U'");   
-                System.out.println("U'");
+                //System.out.println("U'");
             }
 
             if(faceTurn == 10){
                 turnNotModular("D");  
-                System.out.println("D"); 
+                //System.out.println("D"); 
             }
 
             if(faceTurn == 11){
                 turnNotModular("D'"); 
-                System.out.println("D'");  
+                //System.out.println("D'");  
             }
 
             if(faceTurn == 12){
-                System.out.println("This case shouldnt happen in randomize");
+                //System.out.println("This case shouldnt happen in randomize");
             }
 
             //printBlock();
@@ -626,6 +696,395 @@ public class Block {
 
         }
     }
+    
+    int compareCubeStrings(String One, String Two){
 
+        int matches = 0;
+
+        for(int i = 0; i < One.length(); ++i){
+            if(One.charAt(i) == Two.charAt(i)){
+                ++matches;
+            }
+        }
+
+        return matches;
+    }
+
+    int numofNulls(String GoalString){
+        
+        int matches = 0;
+
+        for(int i = 0; i < GoalString.length(); ++i){
+            if(GoalString.charAt(i) == 'N'){
+                ++matches;
+            }
+        }
+
+        return matches;
+    }
+
+    //The Start String should have zero null values where the End should have some if not the goal
+    public String BiDiSearch(String Start, String End){
+
+        final class Node {
+
+            //Node Class Variables
+            private Node parent;
+            private Node child;
+            private Node next;
+            private Node prev;
+            private String BlockString;
+            private String turn;
+    
+            //Default Node Constructor
+            //Default Values
+            public Node(){
+                parent = null;
+                child = null;
+                next = null;
+                BlockString = null;
+                turn = "\0"; //null
+            }
+    
+            public Node(Node parent, Node child, Node next, Node prev, String string, String turn){
+                this.parent = parent;
+                this.child = child;
+                this.next = next;
+                this.prev = prev;
+                BlockString = string;
+                this.turn = turn;
+            }
+        }
+
+        //Total num of colors - numberofNulls 
+        int matches = 54 - numofNulls(End);
+
+        Node TopOpenListHead = null;
+        Node TopNewNodesHead = null;
+        Node BottomOpenListHead = null;
+        Node BottomNewNodesHead = null;
+        Node SearchTop = null;
+        Node SearchBottom = null;
+        Node current = null;
+
+        Node GoalTop = null;
+        Node GoalBottom = null;
+
+        boolean found = false;
+        boolean listEmpty = false;
+        String turn = "\0";
+        String turnBack = "\0";
+        
+
+        if(matches == compareCubeStrings(Start, End)){
+            return "";
+        }
+
+        StringtoBlock(Start);
+        TopOpenListHead = new Node(null, null, null, null, Start, "\0");
+        BottomOpenListHead = new Node(null, null, null, null, End, "\0");
+
+        while(!found){
+            
+            current = TopOpenListHead;
+
+            //System.out.println("Top Level Created");
+
+            while(!listEmpty){
+
+                StringtoBlock(current.BlockString);
+
+                for(int i = 0; i < 12; ++i){
+
+                    if(i == 0){
+                        turn = "R";
+                        turnBack = "R'";
+                    }
+
+                    if(i == 1){
+                        turn = "R'";
+                        turnBack = "R";
+                    }
+
+                    if(i == 2){
+                        turn = "L";
+                        turnBack = "L'";
+                    }
+
+                    if(i == 3){
+                        turn = "L'";
+                        turnBack = "L";
+                    }
+
+                    if(i == 4){
+                        turn = "F";
+                        turnBack = "F'";
+                    }
+
+                    if(i == 5){
+                        turn = "F'";
+                        turnBack = "F";
+                    }
+
+                    if(i == 6){
+                        turn = "B";
+                        turnBack = "B'";
+                    }
+
+                    if(i == 7){
+                        turn = "B'";
+                        turnBack = "B";
+                    }
+
+                    if(i == 8){
+                        turn = "U";
+                        turnBack = "U'";
+                    }
+
+                    if(i == 9){
+                        turn = "U'";
+                        turnBack = "U";
+                    }
+
+                    if(i == 10){
+                        turn = "D";
+                        turnBack = "D'";
+                    }
+
+                    if(i == 11){
+                        turn = "D'";
+                        turnBack = "D";
+                    }
+
+                    turnNotModular(turn);
+                    
+                    if (TopNewNodesHead == null){
+                        TopNewNodesHead = new Node(current, null, null, null, BlocktoString(), turn);
+                        SearchTop = TopNewNodesHead;
+                        SearchTop.turn = turn;
+                        SearchTop.parent = current;
+                    }
+
+                    else{
+                        SearchTop.next = new Node(current, null, null, SearchTop, BlocktoString(), turn);
+                        SearchTop = SearchTop.next;
+                        SearchTop.turn = turn;
+                        SearchTop.parent = current;
+                    }
+                    
+                    SearchBottom = BottomOpenListHead;
+
+                    while(true){
+
+                        if(matches == compareCubeStrings(SearchTop.BlockString, SearchBottom.BlockString)){
+                            found = true;
+                            listEmpty = true;
+                            GoalTop = SearchTop;
+                            GoalBottom = SearchBottom;
+                            break;
+                        }
+
+                        if(SearchBottom.next == null){
+                            break;
+                        }
+
+                        else{
+                            SearchBottom = SearchBottom.next;
+                        }
+                    }
+
+                    turnNotModular(turnBack);
+
+                    if(found){
+                        break;
+                    }
+                } 
+
+                if(found){
+                    break;
+                }
+
+                if(current.next == null){
+                    listEmpty = true;
+                }
+
+                current = current.next;
+            }
+
+            if(found){
+                break;
+            }
+
+            TopOpenListHead = TopNewNodesHead;
+            TopNewNodesHead = null;
+
+            listEmpty = false;
+            
+            current = BottomOpenListHead;
+            
+            //System.out.println("Bottom Level created");
+
+            while(!listEmpty){
+
+                StringtoBlock(current.BlockString);
+
+                for(int i = 0; i < 12; ++i){
+
+                    if(i == 0){
+                        turn = "R";
+                        turnBack = "R'";
+                    }
+
+                    if(i == 1){
+                        turn = "R'";
+                        turnBack = "R";
+                    }
+
+                    if(i == 2){
+                        turn = "L";
+                        turnBack = "L'";
+                    }
+
+                    if(i == 3){
+                        turn = "L'";
+                        turnBack = "L";
+                    }
+
+                    if(i == 4){
+                        turn = "F";
+                        turnBack = "F'";
+                    }
+
+                    if(i == 5){
+                        turn = "F'";
+                        turnBack = "F";
+                    }
+
+                    if(i == 6){
+                        turn = "B";
+                        turnBack = "B'";
+                    }
+
+                    if(i == 7){
+                        turn = "B'";
+                        turnBack = "B";
+                    }
+
+                    if(i == 8){
+                        turn = "U";
+                        turnBack = "U'";
+                    }
+
+                    if(i == 9){
+                        turn = "U'";
+                        turnBack = "U";
+                    }
+
+                    if(i == 10){
+                        turn = "D";
+                        turnBack = "D'";
+                    }
+
+                    if(i == 11){
+                        turn = "D'";
+                        turnBack = "D";
+                    }
+
+                    turnNotModular(turn);
+                    
+                    if (BottomNewNodesHead == null){
+                        BottomNewNodesHead = new Node(current, null, null, null, BlocktoString(), turnBack);
+                        SearchBottom = BottomNewNodesHead;
+                        SearchBottom.parent = current;
+                    }
+
+                    else{
+                        SearchBottom.next = new Node(current, null, null, SearchTop, BlocktoString(), turnBack);
+                        SearchBottom = SearchBottom.next;
+                        SearchBottom.parent = current;
+                    }
+                    
+                    SearchTop = TopOpenListHead;
+
+                    while(true){
+
+                        if(matches == compareCubeStrings(SearchTop.BlockString, SearchBottom.BlockString)){
+                            found = true;
+                            GoalTop = SearchTop;
+                            GoalBottom = SearchBottom;
+                            break;
+                        }
+
+                        if(SearchTop.next == null){
+                            break;
+                        }
+
+                        else{
+                            SearchTop = SearchTop.next;
+                        }
+                    }
+
+                    turnNotModular(turnBack);
+
+                    if(found){
+                        break;
+                    }
+                }
+
+                if(found){
+                    break;
+                }
+
+                if(current.next == null){
+                    listEmpty = true;
+                }
+
+                current = current.next;
+            }
+
+            if(found){
+                break;
+            }
+
+            BottomOpenListHead = BottomNewNodesHead;
+            BottomNewNodesHead = null;
+
+            listEmpty = false;
+
+
+        }
+
+        String turnTop = "";
+        String turnBottom = "";
+
+        while(true){
+
+            turnTop = GoalTop.turn + turnTop;
+            
+            if(GoalTop.parent == null){
+                break;
+            }
+
+            GoalTop = GoalTop.parent;
+        }
+
+        while(true){
+
+            turnBottom = turnBottom + GoalBottom.turn;
+
+            if(GoalBottom.parent == null){
+                break;
+            }
+
+            GoalBottom = GoalBottom.parent;
+        }
+
+        return turnTop + turnBottom;
+
+    }
 }
+
+
+
+
 
