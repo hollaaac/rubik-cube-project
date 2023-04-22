@@ -131,12 +131,12 @@ public class Block {
         BlockString = BlockString + Block[2][0][2].colors[0];
         BlockString = BlockString + Block[2][0][1].colors[0];
         BlockString = BlockString + Block[2][0][0].colors[0];
-        BlockString = BlockString + Block[2][0][2].colors[0];
-        BlockString = BlockString + Block[2][0][1].colors[0];
-        BlockString = BlockString + Block[2][0][0].colors[0];
-        BlockString = BlockString + Block[2][0][2].colors[0];
-        BlockString = BlockString + Block[2][0][1].colors[0];
-        BlockString = BlockString + Block[2][0][0].colors[0];
+        BlockString = BlockString + Block[2][1][2].colors[0];
+        BlockString = BlockString + Block[2][1][1].colors[0];
+        BlockString = BlockString + Block[2][1][0].colors[0];
+        BlockString = BlockString + Block[2][2][2].colors[0];
+        BlockString = BlockString + Block[2][2][1].colors[0];
+        BlockString = BlockString + Block[2][2][0].colors[0];
 
         //Orange Face
         BlockString = BlockString + Block[2][0][0].colors[2];
@@ -202,12 +202,12 @@ public class Block {
         Block[2][0][2].colors[0] = blockString.charAt(27);
         Block[2][0][1].colors[0] = blockString.charAt(28);
         Block[2][0][0].colors[0] = blockString.charAt(29);
-        Block[2][0][2].colors[0] = blockString.charAt(30);
-        Block[2][0][1].colors[0] = blockString.charAt(31);
-        Block[2][0][0].colors[0] = blockString.charAt(32);
-        Block[2][0][2].colors[0] = blockString.charAt(33);
-        Block[2][0][1].colors[0] = blockString.charAt(34);
-        Block[2][0][0].colors[0] = blockString.charAt(35);
+        Block[2][1][2].colors[0] = blockString.charAt(30);
+        Block[2][1][1].colors[0] = blockString.charAt(31);
+        Block[2][1][0].colors[0] = blockString.charAt(32);
+        Block[2][2][2].colors[0] = blockString.charAt(33);
+        Block[2][2][1].colors[0] = blockString.charAt(34);
+        Block[2][2][0].colors[0] = blockString.charAt(35);
 
         //Orange Face
         Block[2][0][0].colors[2] = blockString.charAt(36);
@@ -215,7 +215,7 @@ public class Block {
         Block[0][0][0].colors[2] = blockString.charAt(38);
         Block[2][1][0].colors[2] = blockString.charAt(39);
         Block[1][1][0].colors[2] = blockString.charAt(40);
-        Block[0][1][0].colors[2] = blockString.charAt(14);
+        Block[0][1][0].colors[2] = blockString.charAt(41);
         Block[2][2][0].colors[2] = blockString.charAt(42);
         Block[1][2][0].colors[2] = blockString.charAt(43);
         Block[0][2][0].colors[2] = blockString.charAt(44);
@@ -424,7 +424,7 @@ public class Block {
                 
         }
 
-        if(direction == "U'"){ //Up (Top) ClockWise
+        if(direction == "U"){ //Up (Top) ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[0][0][2];
@@ -446,7 +446,7 @@ public class Block {
                 
         }
 
-        if(direction == "U"){ //Up (Top) Counter-ClockWise
+        if(direction == "U'"){ //Up (Top) Counter-ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[2][0][0];
@@ -730,9 +730,7 @@ public class Block {
 
             //Node Class Variables
             private Node parent;
-            private Node child;
             private Node next;
-            private Node prev;
             private String BlockString;
             private String turn;
     
@@ -740,17 +738,14 @@ public class Block {
             //Default Values
             public Node(){
                 parent = null;
-                child = null;
                 next = null;
                 BlockString = null;
                 turn = "\0"; //null
             }
     
-            public Node(Node parent, Node child, Node next, Node prev, String string, String turn){
+            public Node(Node parent, Node next, String string, String turn){
                 this.parent = parent;
-                this.child = child;
                 this.next = next;
-                this.prev = prev;
                 BlockString = string;
                 this.turn = turn;
             }
@@ -758,6 +753,7 @@ public class Block {
 
         //Total num of colors - numberofNulls 
         int matches = 54 - numofNulls(End);
+        int length = 0;
 
         Node TopOpenListHead = null;
         Node TopNewNodesHead = null;
@@ -777,16 +773,17 @@ public class Block {
         
 
         if(matches == compareCubeStrings(Start, End)){
-            return "";
+            return null;
         }
 
-        StringtoBlock(Start);
-        TopOpenListHead = new Node(null, null, null, null, Start, "\0");
-        BottomOpenListHead = new Node(null, null, null, null, End, "\0");
+        //StringtoBlock(Start);
+        TopOpenListHead = new Node(null, null, Start, "\0");
+        BottomOpenListHead = new Node(null, null, End, "\0");
 
         while(!found){
             
             current = TopOpenListHead;
+            length = length + 1;
 
             //System.out.println("Top Level Created");
 
@@ -859,18 +856,16 @@ public class Block {
                     turnNotModular(turn);
                     
                     if (TopNewNodesHead == null){
-                        TopNewNodesHead = new Node(current, null, null, null, BlocktoString(), turn);
+                        TopNewNodesHead = new Node(current, null, BlocktoString(), turn);
                         SearchTop = TopNewNodesHead;
-                        SearchTop.turn = turn;
-                        SearchTop.parent = current;
                     }
 
                     else{
-                        SearchTop.next = new Node(current, null, null, SearchTop, BlocktoString(), turn);
+                        SearchTop.next = new Node(current, null, BlocktoString(), turn);
                         SearchTop = SearchTop.next;
-                        SearchTop.turn = turn;
-                        SearchTop.parent = current;
                     }
+
+                    turnNotModular(turnBack);
                     
                     SearchBottom = BottomOpenListHead;
 
@@ -888,12 +883,8 @@ public class Block {
                             break;
                         }
 
-                        else{
-                            SearchBottom = SearchBottom.next;
-                        }
+                        SearchBottom = SearchBottom.next;
                     }
-
-                    turnNotModular(turnBack);
 
                     if(found){
                         break;
@@ -917,12 +908,13 @@ public class Block {
 
             TopOpenListHead = TopNewNodesHead;
             TopNewNodesHead = null;
+            SearchTop = null;
+            SearchBottom = null;
 
             listEmpty = false;
             
             current = BottomOpenListHead;
-            
-            //System.out.println("Bottom Level created");
+            length = length + 1;
 
             while(!listEmpty){
 
@@ -993,16 +985,16 @@ public class Block {
                     turnNotModular(turn);
                     
                     if (BottomNewNodesHead == null){
-                        BottomNewNodesHead = new Node(current, null, null, null, BlocktoString(), turnBack);
+                        BottomNewNodesHead = new Node(current, null, BlocktoString(), turnBack); //parent, next, string, 
                         SearchBottom = BottomNewNodesHead;
-                        SearchBottom.parent = current;
                     }
 
                     else{
-                        SearchBottom.next = new Node(current, null, null, SearchTop, BlocktoString(), turnBack);
+                        SearchBottom.next = new Node(current, null, BlocktoString(), turnBack);
                         SearchBottom = SearchBottom.next;
-                        SearchBottom.parent = current;
                     }
+
+                    turnNotModular(turnBack);
                     
                     SearchTop = TopOpenListHead;
 
@@ -1010,6 +1002,7 @@ public class Block {
 
                         if(matches == compareCubeStrings(SearchTop.BlockString, SearchBottom.BlockString)){
                             found = true;
+                            listEmpty = true;
                             GoalTop = SearchTop;
                             GoalBottom = SearchBottom;
                             break;
@@ -1018,13 +1011,10 @@ public class Block {
                         if(SearchTop.next == null){
                             break;
                         }
-
-                        else{
-                            SearchTop = SearchTop.next;
-                        }
+                        
+                        SearchTop = SearchTop.next;
+                        
                     }
-
-                    turnNotModular(turnBack);
 
                     if(found){
                         break;
@@ -1051,13 +1041,41 @@ public class Block {
 
             listEmpty = false;
 
+            SearchBottom = null;
+            SearchTop = null;
+
 
         }
 
         String turnTop = "";
         String turnBottom = "";
 
-        while(true){
+        String[] moves = new String[length];
+
+        System.out.println("Top Match ->    " + GoalTop.BlockString);
+        StringtoBlock(GoalTop.BlockString);
+        printBlock();
+        System.out.println("Bottom Match -> "  + GoalBottom.BlockString);
+        StringtoBlock(GoalBottom.BlockString);
+        printBlock();
+        
+
+        int topmoves = length/2;
+        int bottommoves = length - topmoves;
+
+        /*  for(int i = 0; i < topmoves; ++i){
+            moves[i] = GoalTop.turn;
+            GoalTop = GoalTop.parent;
+        }
+
+        for(int i = 0; i < bottommoves; ++i){
+            moves[i + topmoves] = GoalBottom.turn;
+            GoalBottom = GoalBottom.parent;
+        }
+
+        return moves; */
+
+         while(true){
 
             turnTop = GoalTop.turn + turnTop;
             
