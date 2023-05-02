@@ -1,8 +1,8 @@
 package com.display;
 
-import java.io.*;
+//import java.io.*;
 import java.util.*;
-import java.lang.Math;
+//import java.lang.Math;
 
 public class Block {
     
@@ -234,6 +234,7 @@ public class Block {
     }
 
     //prints block info with cords and colors of cubelets
+    /* 
     void printer(){
 
         int countery = 0;
@@ -263,6 +264,7 @@ public class Block {
             }
         }
     }
+    */
 
     //Helper function that changes based on developer needs
     void printerHelp(){
@@ -292,7 +294,7 @@ public class Block {
          
         Cubelet tempCubelet;
 
-        if(direction == "L"){ //Left ClockWise
+        if(direction.equals("L")){ //Left ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[0][2][0];
@@ -314,7 +316,7 @@ public class Block {
                 
         }
 
-        if(direction == "L'"){ //Left Counter-ClockWise
+        if(direction.equals("l")){ //Left Counter-ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[0][0][2];
@@ -336,7 +338,7 @@ public class Block {
 
         }
 
-        if(direction == "R"){ //Right Clockwise
+        if(direction.equals("R")){ //Right Clockwise
 
             tempCubelet = Block[2][0][0];
             Block[2][0][0] = Block[2][0][2];
@@ -358,7 +360,7 @@ public class Block {
 
         }
 
-        if(direction == "R'"){ //Right Counter-ClockWise
+        if(direction.equals("r")){ //Right Counter-ClockWise
 
             tempCubelet = Block[2][0][0];
             Block[2][0][0] = Block[2][2][0];
@@ -380,7 +382,7 @@ public class Block {
                 
         }
 
-        if(direction == "D'"){ //Bottom (Down) ClockWise
+        if(direction.equals("d")){ //Bottom (Down) ClockWise
 
             tempCubelet = Block[0][2][0];
             Block[0][2][0] = Block[0][2][2];
@@ -402,7 +404,7 @@ public class Block {
                 
         }
 
-        if(direction == "D"){ //Bottom (Down) Counter-ClockWise
+        if(direction.equals("D")){ //Bottom (Down) Counter-ClockWise
 
             tempCubelet = Block[0][2][0];
             Block[0][2][0] = Block[2][2][0];
@@ -424,7 +426,7 @@ public class Block {
                 
         }
 
-        if(direction == "U"){ //Up (Top) ClockWise
+        if(direction.equals("U")){ //Up (Top) ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[0][0][2];
@@ -446,7 +448,7 @@ public class Block {
                 
         }
 
-        if(direction == "U'"){ //Up (Top) Counter-ClockWise
+        if(direction.equals("U")){ //Up (Top) Counter-ClockWise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[2][0][0];
@@ -468,7 +470,7 @@ public class Block {
                 
         }
         
-        if(direction == "B" ){ //Back Clockwise
+        if(direction.equals("B")){ //Back Clockwise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[2][0][0];
@@ -490,7 +492,7 @@ public class Block {
 
         }
 
-        if(direction == "B'" ){ //Back Clockwise
+        if(direction.equals("b")){ //Back Clockwise
 
             tempCubelet = Block[0][0][0];
             Block[0][0][0] = Block[0][2][0];
@@ -512,7 +514,7 @@ public class Block {
 
         }
 
-        if(direction == "F'" ){ //Front Clockwise
+        if(direction.equals("f")){ //Front Clockwise
 
             tempCubelet = Block[0][0][2];
             Block[0][0][2] = Block[2][0][2];
@@ -534,7 +536,7 @@ public class Block {
 
         }
 
-        if(direction == "F" ){ //Front Clockwise
+        if(direction.equals("F")){ //Front Clockwise
 
             tempCubelet = Block[0][0][2];
             Block[0][0][2] = Block[0][2][2];
@@ -556,7 +558,6 @@ public class Block {
 
         }
         
-
     }
 
     //Prints each face individually
@@ -633,7 +634,7 @@ public class Block {
             }
 
             if(faceTurn == 1){
-                turnNotModular("F'"); 
+                turnNotModular("f"); 
                 //System.out.println("F'");  
             }
 
@@ -643,7 +644,7 @@ public class Block {
             }
 
             if(faceTurn == 3){
-                turnNotModular("B'"); 
+                turnNotModular("b"); 
                 //System.out.println("B'");  
             }
 
@@ -653,7 +654,7 @@ public class Block {
             }
 
             if(faceTurn == 5){
-                turnNotModular("R'");  
+                turnNotModular("r");  
                 //System.out.println("R'"); 
             }
 
@@ -663,7 +664,7 @@ public class Block {
             }
 
             if(faceTurn == 7){
-                turnNotModular("L'"); 
+                turnNotModular("l"); 
                 //System.out.println("L'");  
             }
             
@@ -673,7 +674,7 @@ public class Block {
             }
 
             if(faceTurn == 9){
-                turnNotModular("U'");   
+                turnNotModular("u");   
                 //System.out.println("U'");
             }
 
@@ -683,7 +684,7 @@ public class Block {
             }
 
             if(faceTurn == 11){
-                turnNotModular("D'"); 
+                turnNotModular("d"); 
                 //System.out.println("D'");  
             }
 
@@ -724,7 +725,7 @@ public class Block {
     }
 
     //The Start String should have zero null values where the End should have some if not the goal
-    public String BiDiSearch(String Start, String End){
+    public String BiDirectionalTree(String Start, String End){
 
         final class Node {
 
@@ -773,7 +774,7 @@ public class Block {
         
 
         if(matches == compareCubeStrings(Start, End)){
-            return null;
+            return "C";
         }
 
         //StringtoBlock(Start);
@@ -795,61 +796,61 @@ public class Block {
 
                     if(i == 0){
                         turn = "R";
-                        turnBack = "R'";
+                        turnBack = "r";
                     }
 
                     if(i == 1){
-                        turn = "R'";
+                        turn = "r";
                         turnBack = "R";
                     }
 
                     if(i == 2){
                         turn = "L";
-                        turnBack = "L'";
+                        turnBack = "l";
                     }
 
                     if(i == 3){
-                        turn = "L'";
+                        turn = "l";
                         turnBack = "L";
                     }
 
                     if(i == 4){
                         turn = "F";
-                        turnBack = "F'";
+                        turnBack = "f";
                     }
 
                     if(i == 5){
-                        turn = "F'";
+                        turn = "f";
                         turnBack = "F";
                     }
 
                     if(i == 6){
                         turn = "B";
-                        turnBack = "B'";
+                        turnBack = "b";
                     }
 
                     if(i == 7){
-                        turn = "B'";
+                        turn = "b";
                         turnBack = "B";
                     }
 
                     if(i == 8){
                         turn = "U";
-                        turnBack = "U'";
+                        turnBack = "u";
                     }
 
                     if(i == 9){
-                        turn = "U'";
+                        turn = "u";
                         turnBack = "U";
                     }
 
                     if(i == 10){
                         turn = "D";
-                        turnBack = "D'";
+                        turnBack = "d";
                     }
 
                     if(i == 11){
-                        turn = "D'";
+                        turn = "d";
                         turnBack = "D";
                     }
 
@@ -924,61 +925,61 @@ public class Block {
 
                     if(i == 0){
                         turn = "R";
-                        turnBack = "R'";
+                        turnBack = "r";
                     }
 
                     if(i == 1){
-                        turn = "R'";
+                        turn = "r";
                         turnBack = "R";
                     }
 
                     if(i == 2){
                         turn = "L";
-                        turnBack = "L'";
+                        turnBack = "l";
                     }
 
                     if(i == 3){
-                        turn = "L'";
+                        turn = "l";
                         turnBack = "L";
                     }
 
                     if(i == 4){
                         turn = "F";
-                        turnBack = "F'";
+                        turnBack = "f";
                     }
 
                     if(i == 5){
-                        turn = "F'";
+                        turn = "f";
                         turnBack = "F";
                     }
 
                     if(i == 6){
                         turn = "B";
-                        turnBack = "B'";
+                        turnBack = "b";
                     }
 
                     if(i == 7){
-                        turn = "B'";
+                        turn = "b";
                         turnBack = "B";
                     }
 
                     if(i == 8){
                         turn = "U";
-                        turnBack = "U'";
+                        turnBack = "u";
                     }
 
                     if(i == 9){
-                        turn = "U'";
+                        turn = "u";
                         turnBack = "U";
                     }
 
                     if(i == 10){
                         turn = "D";
-                        turnBack = "D'";
+                        turnBack = "d";
                     }
 
                     if(i == 11){
-                        turn = "D'";
+                        turn = "d";
                         turnBack = "D";
                     }
 
@@ -1044,20 +1045,21 @@ public class Block {
             SearchBottom = null;
             SearchTop = null;
 
-
         }
+
+        StringtoBlock(Start);
 
         String turnTop = "";
         String turnBottom = "";
 
         String[] moves = new String[length];
 
-        System.out.println("Top Match ->    " + GoalTop.BlockString);
-        StringtoBlock(GoalTop.BlockString);
-        printBlock();
-        System.out.println("Bottom Match -> "  + GoalBottom.BlockString);
-        StringtoBlock(GoalBottom.BlockString);
-        printBlock();
+        //System.out.println("Top Match ->    " + GoalTop.BlockString);
+        //StringtoBlock(GoalTop.BlockString);
+        //printBlock();
+        //System.out.println("Bottom Match -> "  + GoalBottom.BlockString);
+        //StringtoBlock(GoalBottom.BlockString);
+        //printBlock();
         
 
         int topmoves = length/2;
@@ -1077,28 +1079,337 @@ public class Block {
 
          while(true){
 
-            turnTop = GoalTop.turn + turnTop;
+            
             
             if(GoalTop.parent == null){
                 break;
             }
+
+            turnTop = GoalTop.turn + turnTop;
 
             GoalTop = GoalTop.parent;
         }
 
         while(true){
 
-            turnBottom = turnBottom + GoalBottom.turn;
+            
 
             if(GoalBottom.parent == null){
                 break;
             }
+
+            turnBottom = turnBottom + GoalBottom.turn;
 
             GoalBottom = GoalBottom.parent;
         }
 
         return turnTop + turnBottom;
 
+    }
+
+    public void ApplyMoves(String moves){
+
+        if(moves.equals("C")){ //Complete
+            return;
+        }
+
+        for(int i = 0; i < moves.length(); ++i){
+            turnNotModular(String.valueOf(moves.charAt(i)));
+        }
+    }
+
+    //Search that uses Bidirectional Search tree with Patterns
+    //About 80% sure this works... Just takes forever depending on the orientations of pieces
+    //Haven't taken the hours of my day to let computer sit
+    public String BiDiSearch(){
+
+        //----- Patterns -----
+
+        //White Cross               -> NWN WWW NWN NGN NGN NNN NRN NRN NNN NBN NBN NNN NON NON NNN NNN NNN NNN
+        String WhiteCross = "NWNWWWNWNNGNNGNNNNNRNNRNNNNNBNNBNNNNNONNONNNNNNNNNNNNN";
+
+        ////White Face              -> WWW WWW WWW GGG NGN NNN RRR NRN NNN BBB NBN NNN OOO NON NNN NNN NNN NNN
+        //String WhiteFace = "WWWWWWWWWGGGNGNNNNRRRNRNNNNBBBNBNNNNOOONONNNNNNNNNNNNN";
+
+        //Second Layer              -> WWW WWW WWW GGG GGG NNN RRR RRR NNN BBB BBB NNN OOO OOO NNN NNN NNN NNN
+        //String SecondLayer = "WWWWWWWWWGGGGGGNNNRRRRRRNNNBBBBBBNNNOOOOOONNNNNNNNNNNN";
+
+        //Red Green Second Layer    -> NWN WWW WWN NGG NGG NNN RRN RRN NNN NBN NBN NNN NON NON NNN NNN NNN NNN
+        String RedGreen = "NWNWWWWWNNGGNGGNNNRRNRRNNNNNBNNBNNNNNONNONNNNNNNNNNNNN";
+
+        //Red Blue Second Layer     -> NWN WWW WWW NGG NGG NNN RRR RRR NNN BBN BBN NNN NON NON NNN NNN NNN NNN
+        String RedBlue = "NWNWWWWWWNGGNGGNNNRRRRRRNNNBBNBBNNNNNONNONNNNNNNNNNNNN";
+
+        //Green Orange Second Layer -> WWN WWW WWW GGG GGG NNN RRR RRR NNN BBN BBN NNN NOO NOO NNN NNN NNN NNN
+        String GreenOrange = "WWNWWWWWWGGGGGGNNNRRRRRRNNNBBNBBNNNNNOONOONNNNNNNNNNNN";
+
+        //Orange Blue Second Layer  -> WWW WWW WWW GGG GGG NNN RRR RRR NNN BBB BBB NNN OOO OOO NNN NNN NNN NNN
+        String OrangeBlue = "WWWWWWWWWGGGGGGNNNRRRRRRNNNBBBBBBNNNOOOOOONNNNNNNNNNNN";
+
+        //Yellow Cross      -> WWW WWW WWW GGG GGG NNN RRR RRR NNN BBB BBB NNN OOO OOO NNN NYN YYY NYN
+        String YellowCross = "WWWWWWWWWGGGGGGNNNRRRRRRNNNBBBBBBNNNOOOOOONNNNYNYYYNYN";
+
+        //Yellow Face       -> WWW WWW WWW GGG GGG NNN RRR RRR NNN BBB BBB NNN OOO OOO NNN YYY YYY YYY
+        String YellowFace = "WWWWWWWWWGGGGGGNNNRRRRRRNNNBBBBBBNNNOOOOOONNNYYYYYYYYY";
+
+        //Yellow Corners    -> WWW WWW WWW GGG GGG GNG RRR RRR RNR BBB BBB BNB OOO OOO ONO YYY YYY YYY
+        String YellowCorners = "WWWWWWWWWGGGGGGGNGRRRRRRRNRBBBBBBBNBOOOOOOONOYYYYYYYYY";
+        
+        //BlueFace Solved   -> WWW WWW WWW GGG GGG GNG RRR RRR RNR BBB BBB BBB OOO OOO ONO YYY YYY YYY
+        //String BlueFaceSolved = "WWWWWWWWWGGGGGGGNGRRRRRRRNRBBBBBBBBBOOOOOOONOYYYYYYYYY";
+
+        //GreenFace Solved  -> WWW WWW WWW GGG GGG GNG RRR RRR RNR BBB BBB BBB OOO OOO ONO YYY YYY YYY
+        //String GreenFaceSolved = "WWWWWWWWWGGGGGGGGGRRRRRRRNRBBBBBBBNBOOOOOOONOYYYYYYYYY";
+
+        //RedFace Solved    -> WWW WWW WWW GGG GGG GNG RRR RRR RNR BBB BBB BBB OOO OOO ONO YYY YYY YYY
+        //String RedFaceSolved = "WWWWWWWWWGGGGGGGNGRRRRRRRRRBBBBBBBNBOOOOOOONOYYYYYYYYY";
+
+        //OrangeFace Solved -> WWW WWW WWW GGG GGG GNG RRR RRR RNR BBB BBB BBB OOO OOO ONO YYY YYY YYY
+        //String OrangeFaceSolved = "WWWWWWWWWGGGGGGGNGRRRRRRRNRBBBBBBBNBOOOOOOOOOYYYYYYYYY";
+
+        //----- End Patterns -----
+
+        String moves = "";
+        String tempMoves;
+
+        String[] patterns= new String[8];
+
+        patterns[0] = WhiteCross;
+        patterns[1] = RedGreen;
+        patterns[2] = RedBlue;
+        patterns[3] = GreenOrange;
+        patterns[4] = OrangeBlue;
+        patterns[5] = YellowCross;
+        patterns[6] = YellowFace;
+        patterns[7] = YellowCorners;
+
+
+        String Start = BlocktoString();
+
+        for(int i = 0; i < patterns.length; ++i){
+
+            tempMoves = BiDirectionalTree(BlocktoString(), patterns[i]);
+            System.out.println(tempMoves);
+            printBlock();
+            System.out.println("");
+
+            //If tempMoves = "C"
+            //then no moves were needed for next step
+            //and don't want to add "C" to list of moves
+            if(tempMoves.equals("C")){
+                //Do nothing
+            }
+            
+            else{
+
+                ApplyMoves(tempMoves);
+                moves = moves + tempMoves;
+
+            }
+
+        }
+
+        //Algorithms
+
+        //These are only to orientate final middle edges
+        //Take atleast 12 moves
+        //Will take too long in bidirectional search
+        //Didn't want to.. Had to
+
+        //Orange Face Solved
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGRGRRRRRRRBRBBBBBBBGBOOOOOOOOOYYYYYYYYY")){
+            moves = moves + "rDrdrdrDRDRR";
+        }
+
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGBGRRRRRRRGRBBBBBBBRBOOOOOOOOOYYYYYYYYY")){
+            moves = moves + "LdLDLDLdldll";
+        }
+
+        //Blue Face Solved
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGOGRRRRRRRGRBBBBBBBBBOOOOOOOROYYYYYYYYY")){
+            moves = moves + "DLdLDLDLdldlld";
+        }
+
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGRGRRRRRRRORBBBBBBBBBOOOOOOOGOYYYYYYYYY")){
+            moves = moves + "DrDrdrdrDRDRRd";
+        }
+
+        //Red Face Solved
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGOGRRRRRRRRRBBBBBBBGBOOOOOOOBOYYYYYYYYY")){
+            moves = moves + "DDLdLDLDLdldlldd";
+        }
+
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGBGRRRRRRRRRBBBBBBBOBOOOOOOOGOYYYYYYYYY")){
+            moves = moves + "DDrDrdrdrDRDRRdd";
+        }
+
+        //Green Face Solved
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGGGRRRRRRRORBBBBBBBRBOOOOOOOBOYYYYYYYYY")){
+            moves = moves + "dLdLDLDLdldllD";
+        }
+        
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGGGRRRRRRRBRBBBBBBBOBOOOOOOOROYYYYYYYYY")){
+            moves = moves + "drDrdrdrDRDRRD";
+        }
+
+        //Blue/Green and Red/Orange flipped
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGBGRRRRRRRORBBBBBBBGBOOOOOOOROYYYYYYYYY")){
+            moves = moves + "LdLDLDLdldllDLdLDLDLdldlld";
+        }
+
+        //Blue/Orange and Red/Green flipped
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGRGRRRRRRRGRBBBBBBBOBOOOOOOOBOYYYYYYYYY")){
+            moves = moves + "LdLDLDLdldlldLdLDLDLdldllD";
+        }
+
+        //Blue/Red and Green/Orange flipped
+        if(BlocktoString().equals("WWWWWWWWWGGGGGGGOGRRRRRRRBRBBBBBBBRBOOOOOOOGOYYYYYYYYY")){
+            moves = moves + "LdLDLDLdldllDDrDrdrdrDRDRRdd";
+        }
+
+        //End Algorithms
+        
+        //Return block as it was given
+        StringtoBlock(Start);
+
+        return moves;
+
+    }
+
+    public String AStarSearch(){
+
+        final class Node {
+
+            //Node Class Variables
+            private Node parent;
+            private Node next;
+            private Node previous;
+            private String BlockString;
+            private String turn;
+            private int cost;
+    
+    
+            public Node(Node parent, Node next, Node previous, String string, String turn, int cost){
+                this.parent = parent;
+                this.next = next;
+                this.previous = previous;
+                BlockString = string;
+                this.turn = turn;
+                this.cost = cost;
+            }
+        }
+
+        //Solved Block String -> WWW WWW WWW GGG GGG GGG RRR RRR RRR OOO OOO OOO YYY YYY YYY
+        String Solved = "WWWWWWWWWGGGGGGGGGRRRRRRRRROOOOOOOOOYYYYYYYYY";
+
+        //Make sure block sent into a solved block
+        if(BlocktoString().equals(Solved)){
+            return "";
+        }
+
+        Node root = new Node(null, null, null, BlocktoString(), null, (Integer) 10000);
+
+        Node OpenListHead = root;
+        Node OpenListTail = root;
+        Node ClosedListHead;
+
+        Node current = root;
+        Node search;
+
+        String moves = "";
+
+        int minimum;
+
+        String turn;
+        String turnBack;
+
+        while(true){
+
+            if(current.BlockString.equals(Solved)){
+                break;
+            }
+
+
+            for(int i = 0; i < 12; ++i){
+
+                if(i == 0){
+                    turn = "R";
+                    turnBack = "r";
+                }
+
+                if(i == 1){
+                    turn = "r";
+                    turnBack = "R";
+                }
+
+                if(i == 2){
+                    turn = "L";
+                    turnBack = "l";
+                }
+
+                if(i == 3){
+                    turn = "l";
+                    turnBack = "L";
+                }
+
+                if(i == 4){
+                    turn = "F";
+                    turnBack = "f";
+                }
+
+                if(i == 5){
+                    turn = "f";
+                    turnBack = "F";
+                }
+
+                if(i == 6){
+                    turn = "B";
+                    turnBack = "b";
+                }
+
+                if(i == 7){
+                    turn = "b";
+                    turnBack = "B";
+                }
+
+                if(i == 8){
+                    turn = "U";
+                    turnBack = "u";
+                }
+
+                if(i == 9){
+                    turn = "u";
+                    turnBack = "U";
+                }
+
+                if(i == 10){
+                    turn = "D";
+                    turnBack = "d";
+                }
+
+                if(i == 11){
+                    turn = "d";
+                    turnBack = "D";
+                }
+
+                //Add node to openlist
+                //Make sure to add next/previous in opennodelist add
+                //Maybe create function in node class?
+                
+            }
+
+            //Find Smallest cost value in openlist
+
+            //Remove from Openlist
+
+            //Add to ClosedList
+            
+            //Restart loop?
+        }
+
+        //Come up with move list to return back
+
+        return moves;
     }
 }
 
